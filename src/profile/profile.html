@@ -1,0 +1,161 @@
+
+<div class="page profile">
+
+<div class="header segment">
+  <div class="ui container">
+    <div class="ui items">
+      <div class="item">
+   
+        <div class="middle aligned content">
+          <div class="ui image-octogon mini image">
+              <div class="octogon">
+                 <img ng-src="{{profile.user.avatar.large}}" class="ui image" alt="User profile picture" />
+              </div>
+          </div>
+          <div class="header user">{{profile.user.name}}</div>
+          <div class="right floated">
+            <div class="ui four column grid ">
+              <div class="column  wide">
+                <div class="ui horizontal segment ">
+                  <div class="ui mini statistic">
+                    <div class="value">{{profile.user.following}}</div>
+                    <div class="label">Following </div>
+                  </div>
+                </div>
+              </div>
+              <div class="column wide">
+                <div class="ui horizontal segment ">
+                  <div class="ui mini statistic">
+                    <div class="value">1,250</div>
+                    <div class="label">Events</div>
+                  </div>
+                </div>
+              </div>
+              <div class="column wide">
+                <div class="ui horizontal segment ">
+                  <div class="ui mini statistic">
+                    <div class="value">{{profile.user.followers}}</div>
+                    <div class="label">Followers </div>
+                  </div>
+                </div>
+              </div>
+              <div class="column wide">
+                
+                   <div class="ui primary button" ng-hide="isMe">Follow</div>
+                   <div class="ui primary button" ng-show="isMe">Edit</div>
+              </div>
+            </div><!-- End of floated Content -->
+          </div>
+        </div>
+      </div><!-- End of Item -->
+    </div><!-- End of items-->
+
+
+ 
+
+  </div><!-- End of Container Segment-->
+</div><!-- End of Header Segment-->
+
+
+
+<div class="ui container">
+<div class="ui relaxed items">
+  <div class="item">
+    <div class="ui tiny image">
+      <img src="/images/wireframe/image.png">
+    </div>
+    <div class="middle aligned content">
+      <a class="header">12 Years a Slave</a>
+    </div>
+  </div>
+  <div class="item">
+    <div class="ui tiny image">
+      <img src="/images/wireframe/image.png">
+    </div>
+    <div class="middle aligned content">
+      <a class="header">My Neighbor Totoro</a>
+    </div>
+  </div>
+  <div class="item">
+    <div class="ui tiny image">
+      <img src="/images/wireframe/image.png">
+    </div>
+    <div class="middle aligned content">
+      <a class="header">Watchmen</a>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<div class="ui centered grid">
+
+
+
+    <div class="two wide column">
+      
+       
+
+        <div class="ui horizontal divider">
+          Stats
+        </div>
+        <div class="stats-panel">
+          <div class="row">
+            Followed By : {{0}}
+          </div>
+          <div class="row">
+            Follows : {{0}}
+          </div>
+          <div class="row">
+            Events Created : {{0}}
+          </div>
+          <div class="row">
+            Last Seen: One Day Ago
+          </div>
+        </div>
+    </div>
+    <div class="six wide column">
+        <div class="ui grid">
+          <div class="row">
+              <div class="eight wide column">
+                  <strong>Name</strong>
+              </div>
+              <div class="eight wide column">
+                  {{profile.user.name}}
+              </div>
+          </div>
+
+          <div class="row" ng-show="profile.user.settings.showGender">
+              <div class="eight wide column">
+                  <strong>Sex</strong>
+              </div>
+              <div class="eight wide column">
+                  <span class="{{profile.user.gender | gender}}" />
+              </div>
+          </div>
+
+          <div class="row" ng-show="profile.user.settings.showEmail">
+              <div class="eight wide column">
+                  <strong>E-Mail</strong>
+              </div>
+              <div class="eight wide column">
+                  {{profile.user.email}}
+              </div>
+          </div>
+
+          <div class="row">
+            <div class="column wide column">
+              {{profile.user || json}}
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="four wide column">
+        <!-- Padding -->
+    </div>
+
+</div>
+
+</div>

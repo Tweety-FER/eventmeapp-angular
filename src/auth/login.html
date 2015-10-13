@@ -1,0 +1,50 @@
+<!-- Start of page -->
+
+<div class="login">
+
+    <h3>Sign in</h3>
+    <p>Come on it is free</p>
+
+    <form ng-submit="login.doLogin()" class="ui form">
+        <div ng-show="login.errors._general" class="form-group has-error">
+            <div class="help-block">{{login.errors._general}}</div>
+        </div>
+
+        <div class="field" ng-class="login.errors.email ? 'has-error' : ''">
+            <input type="text" class="form-control" ng-model="login.email" placeholder="E-mail" />
+            <div class="help-block">{{login.errors.email.join('\n')}}</div>
+        </div>
+
+        <div class="field" ng-class="login.errors.password ? 'has-error' : ''">
+            <input type="password" class="form-control" ng-model="login.password" placeholder="Password" />
+            <div class="help-block">{{login.errors.password.join('\n')}}</div>
+        </div>
+
+        <div class="field">
+            <div class="ui vertical animated green  button fluid " ng-disabled="login.busy.busy" ng-click="login.doLogin()">
+                <div class="visible content">
+                    Sign in
+                </div>
+                <div class="hidden content">
+                    It is free
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="field">
+            <div class="ui facebook button fluid" ng-disabled="login.busy.busy" ng-click="login.authenticate('facebook')">
+                <i class="fa fa-facebook"></i>
+                Facebook
+            </div>
+        </div>
+
+  
+
+        <div class="field center ">
+            <a href="">Forgotten yout password?</a>
+        </div>
+    </form>
+</div>

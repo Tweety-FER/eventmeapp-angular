@@ -1,0 +1,17 @@
+{
+  "name": "Eventmeapp",
+  "description": "Eventmeapp description",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "~3.3.2",
+    "bootstrap-select": "~1.6.4",
+    "font-awesome": "~4.3.0",
+    "bootstrap-social": "~4.8.0",
+    "semantic-ui": "~1.11.8",
+    "mailcheck": "~1.1.0"
+  },
+  "resolutions": {
+    "font-awesome": "~4.3.0"
+  }
+}

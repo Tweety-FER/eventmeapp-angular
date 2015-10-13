@@ -1,0 +1,69 @@
+
+@imageMini: 35px;
+@imageTiny: 80px;
+@imageSmall: 150px;
+@imageMedium: 300px;
+@imageLarge: 450px;
+@imageBig: 600px;
+@imageHuge: 800px;
+@imageMassive: 960px;
+
+/* 
+ * ==== octogone
+ */
+.image-octogon, .image-octogon div {
+  margin: 0 auto;
+  transform-origin: 50% 50%;
+  overflow: hidden;
+  width: 300px;
+  height: 300px;
+}
+.image-octogon, .image-octogon div {
+  width: 270px;
+  height: 270px;
+}
+.image-octogon {
+  transform: rotate(45deg);
+}
+.image-octogon .octogon {
+  transform: rotate(-45deg);
+ }
+
+
+// Mini
+
+.image-octogon.mini{
+ 	width:@imageMini!important;
+ 	height:@imageMini!important;
+ }
+.image-octogon.mini, .image-octogon.mini div {
+	width:@imageMini;
+ 	height:@imageMini;
+}
+
+// Tiny
+
+.image-octogon.tiny{
+  width:@imageTiny;
+  height:@imageTiny;
+ }
+.image-octogon.tiny, .image-octogon.tiny div {
+  width:@imageTiny;
+  height:@imageTiny;
+}
+
+.image-octogon.small{
+  width:@imageSmall;
+  height:@imageSmall;
+ }
+.image-octogon.small, .image-octogon.small div {
+  width:@imageSmall;
+  height:@imageSmall;
+}
+
+ .image-octogon.large
+,.image-octogon.large .image-octogon.large div{
+ 	width:@imageLarge;
+ 	height:@imageLarge;
+}
+

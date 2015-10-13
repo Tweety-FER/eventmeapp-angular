@@ -1,0 +1,96 @@
+
+
+<div class="ui grid" >
+    <div class="computer tablet only row" >
+        <div class="ui fixed top inverted menu medium main" >
+            <div class="ui container cd-main-nav " ng-class="{'moves-out':navbar.isUserMenuVisible}">
+                <div class="title item header"  ui-sref="index1" >Eventmeapp</div>
+                
+                <a class="item" ui-sref="index" ui-sref-active="active">
+                    <i class="icon home"></i> 
+                    Home
+                </a>
+
+                <a class="item" ui-sref-active="active" ui-sref="events">
+                    <i class="icon search"></i> 
+                    Discover
+                </a>
+
+                
+                <div class="right menu ">
+                    <div class="item">
+                        <div class="ui transparent1 icon input inverted transparent search">
+                            <input type="text" class="prompt" placeholder="Search...">
+                            <i class="search link icon"></i>
+                            <div class="results"></div>
+                        </div>
+                    </div>
+
+                    <div class="ui item dropdown1 top user-holder " ng-show="navbar.user.loggedIn">
+                       <a class="cd-subnav-trigger" href="" ng-click="navbar.toggleUserMenu()">
+                            <img class="ui circular1 avatar tiny image" style="width:24px; height:24px; margin:0px; margin-right:5px;" ng-src="{{navbar.user.avatar.small}}">
+                            {{navbar.user.name}}
+                            
+                        </a>
+                    </div>
+                </div><!-- End of right menu -->  
+<div class="user-menu ui menu" >
+   <div class="ui container">
+                            <a class="item" ui-sref-active="active" ui-sref="profile">
+                                <i class="icon user"></i>
+                                Me
+                            </a>
+              
+                             <a class="item" ui-sref-active="active" ui-sref="follow">Following</a>
+                             <a class="item" ui-sref-active="active" ui-sref="settings">
+                                <i class="icon setting"></i>
+                                Settings
+                             </a>
+                              
+                              <a class="item" ui-sref="index" ng-click="navbar.doLogout()">
+                                <i class="sign out icon"></i>
+                                Sign out
+                              </a>
+                              </div>
+                            </div>
+
+            </div><!-- End of container -->
+
+
+
+
+        </div><!-- End of ui menu-->
+    </div><!-- End of computer-->
+    
+    <div class="mobile only row">
+            <div class="ui inverted navbar menu">
+                <a href="" class="brand item">Project Name</a>
+                <div class="right menu open">
+                    <a href="" class="menu item">
+                        <i class="reorder icon"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ui vertical navbar menu">
+                <a href="" class="active item">Home</a>
+                <a href="" class="item">About</a>
+                <a href="" class="item">Contact</a>
+                <div class="ui item">
+                    <div class="text">Dropdown</div>
+                    <div class="menu">
+                        <a class="item">Action</a>
+                        <a class="item">Another action</a>
+                        <a class="item">Something else here</a>
+                        <a class="ui aider"></a>
+                        <a class="item">Seperated link</a>
+                        <a class="item">One more seperated link</a>
+                      </div>
+                </div>
+                <div class="menu">
+                    <a href="" class="active item">Default</a>
+                    <a href="" class="item">Static top</a>
+                    <a href="" class="item">Fixed top</a>
+                </div>
+            </div>
+        </div>
+</div>
