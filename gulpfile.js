@@ -61,7 +61,7 @@ function forFiles(pattern, f) {
 
 
 // Basic naming and location config
-var appName = 'in2-widgets',
+var appName = 'eventmeapp',
     src     = 'src/',
     dest    = 'build/',
     resources = 'local_resources/',
@@ -106,19 +106,22 @@ var  outJs   = dest + 'js/',
       src + '**/*.less'
     ],
     cssSources = [
-      resources + 'semantic.css',
       src + '**/*.css'
     ],
     jsFullSources = [
       dest + 'js/templates.js',
-      dest + 'js/app.js',
-      resources + 'semantic.js'
+      dest + 'js/app.js'
     ],
     jsBundleSources = [
       resources + 'jquery.js',
       resources + 'angular.js',
+      resources + 'spin.js',
+      resources + 'angular-spinner.js',
+      resources + 'angular-touch.js',
+      resources + 'ui-route.min.js',
       resources + 'angular-resource.min.js',
       resources + 'angular-sanitize.min.js',
+      resources + 'satellizer.js',
       outJs + appName + '.js'
     ];
 
