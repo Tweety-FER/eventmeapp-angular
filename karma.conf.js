@@ -15,11 +15,12 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'local_resources/angular.js',
-      'local_resources/angular-mocks.js',
-      'local_resources/angular-resource.min.js',
-      'local_resources/angular-sanitize.min.js',
       'local_resources/jquery.js',
+      'local_resources/spin.js',
+      'local_resources/angular.js',
+      'local_resources/angular-*.js',
+      'local_resources/satellizer.js',
+      'local_resources/ui-route.min.js',
       'build/js/templates.js',
       'src/**/*.js',
       'src/**/*.html', //Template files (must be preprocessed)

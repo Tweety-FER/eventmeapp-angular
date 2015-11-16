@@ -25,7 +25,7 @@ describe('API utils module', function() {
     });
 
     it('should default to http://api.eventmeapp.dev/v1/', function() {
-      expect(link('test')).toBe('http://api.eventmeapp.dev/v1/');
+      expect(link('test')).toBe('http://api.eventmeapp.dev/v1/test');
     });
 
     it('should strip leading slashes', function() {

@@ -976,7 +976,7 @@ $templateCache.put("settings/settings.html","<div>\n    <span class=\"fa fa-spin
         var defVersion = 'v1/';
 
         return function(path, domain, version) {
-          domain = domain || 'http://api.eventmeapp.dev';
+          domain = domain || 'http://api.eventmeapp.dev/';
           version = version || defVersion;
 
           var basePath = domain + version;
