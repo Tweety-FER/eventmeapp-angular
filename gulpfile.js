@@ -1,23 +1,17 @@
 var gulp = require('gulp');
-var elixir = require('laravel-elixir');
 var notify = require('gulp-notify');
 var gutil = require('gulp-util');
 var templateCache = require('gulp-angular-templatecache');
-var debug = require('gulp-debug');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var minifycss = require('gulp-minify-css');
 var jshint = require('gulp-jshint');
-var coffee = require('gulp-coffee');
 var less = require('gulp-less');
 var stylish = require('jshint-stylish');
 var Server = require('karma').Server;
 var es6transpiler = require('gulp-es6-transpiler');
-var angularProtractor = require('gulp-angular-protractor');
 var runSequence = require('run-sequence');
 var yargs = require('yargs').argv;
-var markdownDocs = require('gulp-markdown-docs');
-var typescript = require('gulp-tsc');
 var del = require('del');
 var eol = require('gulp-eol');
 var fatalLevel = yargs.fatal //Fatal level flag
@@ -83,14 +77,9 @@ var  outJs   = dest + 'js/',
     compCss = compiledExt + '.css',
     jsSources = [
       'node_modules/underscore/underscore-min.js',
-      '!' + src + '**/*.e2e.js',
-      '!' + src + '**/*.e2e.compiled.js',
       '!' + src + '**/*.spec.js',
       '!' + src + '**/*.spec.compiled.js',
       src + '/**/*.js'
-    ],
-    e2eSources = [
-      src + '**/*.e2e.js'
     ],
     es6Sources = [
       src + '**/*.es6'
@@ -98,9 +87,6 @@ var  outJs   = dest + 'js/',
     tscSources = [
       src + '**/*.ts',
       src + '**/*.tsc'
-    ],
-    coffeeSources = [
-      src + '**/*.coffee'
     ],
     lessSources = [
       src + '**/*.less'
@@ -135,20 +121,6 @@ gulp.task('build:templates', function() {
         .on('error', onError);
 });
 
-/*
-* Finds all markdown files (.md) and creates a single documentation file
-*/
-gulp.task('markdown', function () {
-  return gulp.src(src + '**/*.md')
-    .pipe(eol('\n'))
-    .pipe(markdownDocs(appName + '.html', {
-      highlightTheme: 'monokai',
-      yamlMeta : true
-  }))
-    .pipe(gulp.dest(outDocs))
-    .on('error', onError);
-});
-
 gulp.task('clean', ['clean:dist'], function() {
   return del([
     src + '**/*.compiled.js',
@@ -163,7 +135,7 @@ gulp.task('clean:dist', function() {
   ]);
 })
 
-gulp.task('build:concat', ['build:es6', 'build:typescript', 'build:coffee'], function() {
+gulp.task('build:concat', ['build:es6'], function() {
     return gulp.src(jsSources)
           .pipe(concat('app.js'))
           .pipe(gulp.dest(outJs))
@@ -181,25 +153,9 @@ gulp.task('test:unit', function (done) {
 });
 
 /*
-* Runs end-to-end tests
-*/
-gulp.task('test:e2e', function() {
-  return gulp.src(e2eSources)
-              .pipe(angularProtractor({
-                  'configFile': 'protractor.conf.js',
-                  'autoStartStopServer': true,
-                  'debug': true
-              })).on('error', onError);
-              /*.on('error', function(err) {
-                console.log('Error =>', err);
-                this.emit('end');
-              });*/
-});
-
-/*
 * Runs all the tests (both unit and end-to-end)
 */
-gulp.task('test', ['test:unit', 'test:e2e']);
+gulp.task('test', ['test:unit']);
 
 gulp.task('build:es6', function() {
   return gulp
@@ -227,26 +183,6 @@ gulp.task('build:es6', function() {
         }))
         .pipe(gulp.dest(src)) // Put them back where you found them
         .on('error', onError);
-});
-
-gulp.task('build:typescript', function() {
-  return gulp.src(tscSources)
-             .pipe(typescript())
-             .pipe(rename(function (path) {
-               path.extname = compJs;
-             }))
-             .pipe(gulp.dest(src)) // Put them back where you found them
-             .on('error', onError);
-});
-
-gulp.task('build:coffee', function() {
-  return gulp.src(coffeeSources)
-      .pipe(coffee({bare: true}))
-      .pipe(rename(function (path) {
-        path.extname = compJs;
-      }))
-      .pipe(gulp.dest(src)) // Put them back
-      .on('error', onError);
 });
 
 gulp.task('build', ['build:nobundle'], function() {
@@ -356,7 +292,7 @@ gulp.task('ci', function() {
       'pre:lint',
       ['build', 'style'],
       'test:unit',
-      ['clean', 'minify', 'markdown']
+      ['clean', 'minify']
     );
 });
 
