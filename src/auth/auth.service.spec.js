@@ -1,32 +1,29 @@
-'use strict';
-
-
 describe('Authentification services', function() {
   /**
   * Promise mock, to be returned into functions expecting promises
   */
   function FakePromise(success, data) {
     var returnData = {};
-    returnData['data'] = data || {};
+    returnData.data = data || {};
 
     if(success) {
       this.then = function(f) {
-        returnData['code'] = 200;
+        returnData.code = 200;
         returnData.success = true;
         if(f) {
           return f(returnData, 200);
         }
-      }
+      };
     } else {
       this.then = function(f, g) {
-        data['code'] = 400;
+        data.code = 400;
         returnData.success = false;
         if(g) {
           return g(returnData, 400);
         } else {
           return 'Propagate error';
         }
-      }
+      };
     }
   }
 
@@ -39,8 +36,8 @@ describe('Authentification services', function() {
       var expectedUrl = 'http://eventmeapp.com/api/dev/auth/register';
 
       function validate(data) {
-        return data && data.password && data.email && data['name'] &&
-               data.timezone_offset && data['name'] === data.password;
+        return data && data.password && data.email && data.name &&
+               data.timezone_offset && data.name === data.password;
       }
 
       api = {
@@ -52,7 +49,7 @@ describe('Authentification services', function() {
             return new FakePromise(false, {good : 'no'});
           }
         }
-      }
+      };
 
       module(function($provide) {
         $provide.value('api', api);
@@ -88,7 +85,7 @@ describe('Authentification services', function() {
       var expectedUrl = 'http://eventmeapp.com/api/dev/auth/login';
 
       function validate(data) {
-        return data && data.email && data.password && data.email == data.password;
+        return data && data.email && data.password && data.email === data.password;
       }
 
       api = {
@@ -100,7 +97,7 @@ describe('Authentification services', function() {
             return new FakePromise(false, {good : 'no'});
           }
         }
-      }
+      };
 
       module(function($provide) {
         $provide.value('api', api);

@@ -31,7 +31,6 @@
             'emu.api',
             'emu.views',
             'emu.status',
-            'emu.calendar',
             'satellizer',
             'ngSanitize',
             'ui.router',
@@ -139,7 +138,9 @@
                       return profileProvider.$get();
                     },
                     user : function(profile, authenticated, $stateParams) {
-                        if(!authenticated) return {}; //Nothing is going to happen anyway
+                        if(!authenticated) {
+                          return; //Nothing is going to happen anyway
+                        }
 
                         var status = statusProvider.$get();
 

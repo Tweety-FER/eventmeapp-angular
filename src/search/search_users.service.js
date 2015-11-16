@@ -8,7 +8,7 @@
     /**
      * Registers the user by e-mail, name and password via api
      */
-    Register.$inject = ['api'];
+    SearchUsers.$inject = ['api'];
 
     function SearchUsers(api) {
         function register(name) {
@@ -26,7 +26,7 @@
         return register;
     }
 
-   
+
 
 
 

@@ -31,7 +31,7 @@
             function success(data) {
                 if(data && data.data) {
                     self.user = data.data;
-                    self.isMe = self.user.id === me.id;
+                    self.isMe = self.user.id === currentUser.id;
                 }
             }
 

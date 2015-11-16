@@ -40,19 +40,19 @@
           controller : NagController,
           controllerAs : 'nag'
       };
+    }
 
-      NagController.$inject = ['nag'];
+    NagController.$inject = ['nag'];
 
-      function NagController(nag) {
-          var self = this;
+    function NagController(nag) {
+        var self = this;
 
-          self.data = nag.data;
-          self.hide = nag.hide;
+        self.data = nag.data;
+        self.hide = nag.hide;
 
-          function hide() {
-              nag.hide();
-          }
-      }
+        function hide() {
+            nag.hide();
+        }
     }
 
     SemanticTabs.$inject = ['$templateCache'];
@@ -63,39 +63,39 @@
         scope : {},
         transclude : true,
         template : $templateCache.get('fx/tabs.html'),
-        controller : tabsCtrl,
+        controller : TabsCtrl,
         controllerAs : 'tabs'
       };
+    }
 
-      tabsCtrl.$inject = ['$scope'];
+    TabsCtrl.$inject = ['$scope'];
 
-      function tabsCtrl($scope) {
-        var self = this;
+    function TabsCtrl($scope) {
+      var self = this;
 
-        self.tabs = [];
-        self.addTab = addTab; //this ! Must be to be accessible by child!
-        self.activate = activate;
-        self.lastIndex = 0;
-        self.activeIndex = 0;
-        self.getActiveIndex = getActiveIndex;
+      self.tabs = [];
+      self.addTab = addTab; //this ! Must be to be accessible by child!
+      self.activate = activate;
+      self.lastIndex = 0;
+      self.activeIndex = 0;
+      self.getActiveIndex = getActiveIndex;
 
-        function getActiveIndex() {
-          return self.activeIndex;
-        }
-
-        function addTab(tabName) {
-          var index = 0 + self.lastIndex++;
-          tabName = tabName || ('Tab ' + (index + 1));
-
-          self.tabs.push(tabName);
-          return index;
-        }
-
-        function activate(index) {
-          self.activeIndex = index;
-        }
-
+      function getActiveIndex() {
+        return self.activeIndex;
       }
+
+      function addTab(tabName) {
+        var index = 0 + self.lastIndex++;
+        tabName = tabName || ('Tab ' + (index + 1));
+
+        self.tabs.push(tabName);
+        return index;
+      }
+
+      function activate(index) {
+        self.activeIndex = index;
+      }
+
     }
 
     SemanticTab.$inject = ['$templateCache'];

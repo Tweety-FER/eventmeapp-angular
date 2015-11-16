@@ -21,10 +21,10 @@
         var self = this;
         self.search = function(){
             alert('search');
-        }
-        
+        };
+
     }
 
 
-    
+
 })();

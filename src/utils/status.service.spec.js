@@ -1,5 +1,3 @@
-'use strict';
-
 describe('Status spinner service', function() {
 
   beforeEach(module('emu.status'));

@@ -14,31 +14,21 @@
         .factory('api', Api);
 
     function ApiLink() {
-        var defApiPath = 'api/';
-        var defVersion = 'dev/';
+        var defVersion = 'v1/';
 
-        return function(path, domain, apiPath, version) {
-            //If there is no domain, assume global domain. If no global domain, fallback to locally defined default
-            if(! domain) {
-              if(defaultDomain) {
-                domain = defaultDomain;
-              } else {
-                domain = 'http://eventmeapp.com';
-              }
-            }
+        return function(path, domain, version) {
+          domain = domain || 'http://api.eventmeapp.dev';
+          version = version || defVersion;
 
-            apiPath = apiPath || defApiPath;
-            version = version || defVersion;
+          var basePath = domain + version;
 
-            var basePath = domain + apiPath + version;
+          //Normalise the string in regards to leading slashes
+          while(path.charAt(0) === '/') {
+              path = path.substring(1);
+          }
 
-            //Normalises the string in regards to leading slashes
-            while(path.charAt(0) === '/') {
-                path = path.substring(1);
-            }
-
-            //Links the path to the api prefix
-            return basePath + path;
+          //Links the path to the api prefix
+          return basePath + path;
         };
     }
 

@@ -37,7 +37,6 @@
             'emu.api',
             'emu.views',
             'emu.status',
-            'emu.calendar',
             'satellizer',
             'ngSanitize',
             'ui.router',
@@ -145,7 +144,9 @@
                       return profileProvider.$get();
                     },
                     user : function(profile, authenticated, $stateParams) {
-                        if(!authenticated) return {}; //Nothing is going to happen anyway
+                        if(!authenticated) {
+                          return; //Nothing is going to happen anyway
+                        }
 
                         var status = statusProvider.$get();
 
@@ -517,183 +518,6 @@
         });
 })();
 
-(function() {
-  'use strict';
-
-  const MIN_IN_DAY = 24 * 60;
-  const MIN_INTERVALS = 12; //2-hour
-  const MAX_INTERVALS = 24 * 6; //10-minute
-  const DEFAULT_MINUTES = 30;
-  const DEBUG = true;
-  const TEST_DATA = [
-    {
-      name : 'Test 1',
-      from : '08:00',
-      to : '09:30',
-      location : 'Office'
-    },
-    {
-      name : 'Test 2',
-      from : '09:00',
-      to : '10:00',
-      location : 'Home'
-    },
-    {
-      name : 'Test 3',
-      from : '12:00',
-      to : '12:15',
-      location : 'Lunch'
-    }
-  ];
-
-  angular
-    .module('emu.calendar', ['templates'])
-    .directive('emuCalColumn', Column)
-    .directive('emuCalendar', Calendar);
-
-  Column.$inject = ['$templateCache', '$filter'];
-
-  function Column($templateCache, $filter) {
-
-    ColumnCtrl.$inject = [];
-
-    function ColumnCtrl() {
-      var self = this;
-
-      self.minutes = self.minutes || DEFAULT_MINUTES;
-      self.events = self.events || TEST_DATA; //TODO remove
-
-      var minBackup = self.minutes;
-
-      //Calculate number of intervals, but keep them between 10-minute and 2-hour
-      self.intervals = Math.min(
-          MAX_INTERVALS,
-          Math.max(
-            MIN_INTERVALS,
-            Math.round(MIN_IN_DAY / self.minutes)
-          )
-        );
-
-      self.minutes = MIN_IN_DAY / self.intervals; //Keep minute intervals in check
-      self.slots = processEvents(self.events);
-
-      console.log('Slots', self.slots);
-
-      if(DEBUG && minBackup != self.minutes) {
-        console.log('[DEBUG]', 'Normalised minutes to', self.minutes);
-      }
-
-      function processEvents(events) {
-        var slots = [];
-
-        // Instantiate blank intervals
-        for(var i = 0; i < self.intervals; i++) {
-          slots.push({fields : []});
-        }
-
-        angular.forEach(events, function(e) {
-          var mFrom = getMinutes(e.from);
-          var mTo = getMinutes(e.to);
-          //name, location
-          var span = $filter('date')(e.from, 'HH:mm')
-                   + '-'
-                   + $filter('date')(e.to, 'HH:mm');
-
-          mFrom = Math.floor(mFrom / self.minutes); //Floor to find beginning slot index
-          mTo = Math.ceil(mTo / self.minutes) - 1; //Ceil to find end slot index
-
-          slots[mFrom].fields.push({
-            span : span,
-            name : e.name,
-            location : e.location,
-            blank : false
-          });
-
-          for(var i = mFrom + 1; i <= mTo; i++) {
-            slots[i].fields.push({blank : true});
-          }
-        });
-
-        return slots;
-      }
-
-      function getMinutes(hhmm) {
-        var parts = hhmm.split(':');
-        return (60 * (+parts[0])) + (+parts[1]);
-      }
-    }
-
-    return {
-      restrict : 'E',
-      scope : {
-        events : '@',
-        minutes : '@'
-      },
-      template : $templateCache.get('calendar/column.html'),
-      controller : ColumnCtrl,
-      controllerAs : 'col',
-      bindToController : true
-
-    };
-  }
-
-  Calendar.$inject = ['$templateCache'];
-
-  function Calendar($templateCache) {
-    return {
-      restrict :'E',
-      template : $templateCache.get('calendar/calendar.html'),
-      controller : CalendarCtrl,
-      controllerAs : 'calendar',
-      bindToController : true
-    };
-
-    CalendarCtrl.$inject = [];
-
-    function CalendarCtrl() {
-      var self = this;
-
-      self.weekdays = [
-        {
-          name : 'Monday',
-          work : true
-        },
-        {
-          name : 'Tuesday',
-          work : true
-        },
-        {
-          name : 'Wednesday',
-          work : true
-        },
-        {
-          name : 'Thursday',
-          work : true
-        },
-        {
-          name : 'Friday',
-          work : true
-        },
-        {
-          name : 'Saturday',
-          work : false
-        },
-        {
-          name : 'Sunday',
-          work : false
-        }
-      ];
-
-      self.slots = [];
-
-      for(var i = 0; i < 24; i++) {
-        self.slots.push(i + ":00");
-      }
-    }
-  }
-
-}());
-
 (function () {
     'use strict';
 
@@ -736,19 +560,19 @@
           controller : NagController,
           controllerAs : 'nag'
       };
+    }
 
-      NagController.$inject = ['nag'];
+    NagController.$inject = ['nag'];
 
-      function NagController(nag) {
-          var self = this;
+    function NagController(nag) {
+        var self = this;
 
-          self.data = nag.data;
-          self.hide = nag.hide;
+        self.data = nag.data;
+        self.hide = nag.hide;
 
-          function hide() {
-              nag.hide();
-          }
-      }
+        function hide() {
+            nag.hide();
+        }
     }
 
     SemanticTabs.$inject = ['$templateCache'];
@@ -759,39 +583,39 @@
         scope : {},
         transclude : true,
         template : $templateCache.get('fx/tabs.html'),
-        controller : tabsCtrl,
+        controller : TabsCtrl,
         controllerAs : 'tabs'
       };
+    }
 
-      tabsCtrl.$inject = ['$scope'];
+    TabsCtrl.$inject = ['$scope'];
 
-      function tabsCtrl($scope) {
-        var self = this;
+    function TabsCtrl($scope) {
+      var self = this;
 
-        self.tabs = [];
-        self.addTab = addTab; //this ! Must be to be accessible by child!
-        self.activate = activate;
-        self.lastIndex = 0;
-        self.activeIndex = 0;
-        self.getActiveIndex = getActiveIndex;
+      self.tabs = [];
+      self.addTab = addTab; //this ! Must be to be accessible by child!
+      self.activate = activate;
+      self.lastIndex = 0;
+      self.activeIndex = 0;
+      self.getActiveIndex = getActiveIndex;
 
-        function getActiveIndex() {
-          return self.activeIndex;
-        }
-
-        function addTab(tabName) {
-          var index = 0 + self.lastIndex++;
-          tabName = tabName || ('Tab ' + (index + 1));
-
-          self.tabs.push(tabName);
-          return index;
-        }
-
-        function activate(index) {
-          self.activeIndex = index;
-        }
-
+      function getActiveIndex() {
+        return self.activeIndex;
       }
+
+      function addTab(tabName) {
+        var index = 0 + self.lastIndex++;
+        tabName = tabName || ('Tab ' + (index + 1));
+
+        self.tabs.push(tabName);
+        return index;
+      }
+
+      function activate(index) {
+        self.activeIndex = index;
+      }
+
     }
 
     SemanticTab.$inject = ['$templateCache'];
@@ -942,11 +766,12 @@
         self.doLogout = function(){
             logout();
             self.isUserMenuVisible = false;
-        }
+        };
+        
         self.user = user;
         console.log(user);
         self.toggleUserMenu = function (){
-            
+
             self.isUserMenuVisible = ! self.isUserMenuVisible;
         };
         self.isUserMenuVisible = false;
@@ -955,8 +780,9 @@
     }
 
 
-    
+
 })();
+
 (function () {
     'use strict';
 
@@ -990,7 +816,7 @@
             function success(data) {
                 if(data && data.data) {
                     self.user = data.data;
-                    self.isMe = self.user.id === me.id;
+                    self.isMe = self.user.id === currentUser.id;
                 }
             }
 
@@ -1006,6 +832,7 @@
         }
 
 })();
+
 (function () {
     'use strict';
 
@@ -1071,13 +898,14 @@
         var self = this;
         self.search = function(){
             alert('search');
-        }
-        
+        };
+
     }
 
 
-    
+
 })();
+
 (function () {
     'use strict';
 
@@ -1088,7 +916,7 @@
     /**
      * Registers the user by e-mail, name and password via api
      */
-    Register.$inject = ['api'];
+    SearchUsers.$inject = ['api'];
 
     function SearchUsers(api) {
         function register(name) {
@@ -1106,7 +934,7 @@
         return register;
     }
 
-   
+
 
 
 
@@ -1128,31 +956,21 @@
         .factory('api', Api);
 
     function ApiLink() {
-        var defApiPath = 'api/';
-        var defVersion = 'dev/';
+        var defVersion = 'v1/';
 
-        return function(path, domain, apiPath, version) {
-            //If there is no domain, assume global domain. If no global domain, fallback to locally defined default
-            if(! domain) {
-              if(defaultDomain) {
-                domain = defaultDomain;
-              } else {
-                domain = 'http://eventmeapp.com';
-              }
-            }
+        return function(path, domain, version) {
+          domain = domain || 'http://api.eventmeapp.dev';
+          version = version || defVersion;
 
-            apiPath = apiPath || defApiPath;
-            version = version || defVersion;
+          var basePath = domain + version;
 
-            var basePath = domain + apiPath + version;
+          //Normalise the string in regards to leading slashes
+          while(path.charAt(0) === '/') {
+              path = path.substring(1);
+          }
 
-            //Normalises the string in regards to leading slashes
-            while(path.charAt(0) === '/') {
-                path = path.substring(1);
-            }
-
-            //Links the path to the api prefix
-            return basePath + path;
+          //Links the path to the api prefix
+          return basePath + path;
         };
     }
 

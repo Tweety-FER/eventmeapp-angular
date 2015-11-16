@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for utils/api.utils.service.spec.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">utils/</a> api.utils.service.spec.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">94.64% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>53/56</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">95.24% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>20/21</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">94.64% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>53/56</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&nbsp;
+var defaultDomain = 'http://api.eventmeapp.dev/';
+&nbsp;
+describe('API utils module', function() {
+  beforeEach(function() {
+    //module('emu.user');
+    module('emu.api.utils');
+  });
+&nbsp;
+  describe('apiLink link transformation service with default domain', function() {
+    var link;
+&nbsp;
+    beforeEach(function() {
+      module(function($provide) {
+        $provide.value('currentUser', {});
+      });
+&nbsp;
+      inject(function(_apiLink_) {
+        link = _apiLink_;
+      });
+    });
+&nbsp;
+    it('should be defined', function() {
+      expect(link).toBeDefined();
+    });
+&nbsp;
+    it('should default to http://api.eventmeapp.dev/v1/', function() {
+      expect(link('test')).toBe('http://api.eventmeapp.dev/v1/');
+    });
+&nbsp;
+    it('should strip leading slashes', function() {
+      expect(link('/test/1')).toBe('http://api.eventmeapp.dev/v1/test/1');
+    });
+  });
+&nbsp;
+  describe('api service', function() {
+    var api, user, $httpBackend;
+&nbsp;
+    beforeEach(function() {
+      inject(function($injector) {
+        // Set up the mock http service responses
+        $httpBackend = $injector.get('$httpBackend');
+      });
+&nbsp;
+      inject(function(_api_, _currentUser_) {
+        api = _api_;
+        user = _currentUser_;
+&nbsp;
+        user.loggedIn = true;
+        user.token = 'abcd';
+      });
+    });
+&nbsp;
+    afterEach(function() {
+      $httpBackend.verifyNoOutstandingExpectation();
+<span class="cstat-no" title="statement not covered" >      $httpBackend.verifyNoOutstandingRequest();</span>
+    });
+&nbsp;
+    it('should perform valid GET requests', function() {
+      api.get('test');
+      $httpBackend.expectGET('http://api.eventmeapp.dev/v1/test')
+                  .respond(200, '');
+      $httpBackend.flush();
+    });
+&nbsp;
+    it('should perform valid POST requests', function() {
+      api.post('test');
+      $httpBackend.expectPOST('http://api.eventmeapp.dev/v1/test')
+                  .respond(200, '');
+      $httpBackend.flush();
+    });
+&nbsp;
+    it('should perform valid PUT requests', function() {
+      api.put('test');
+      $httpBackend.expectPUT('http://api.eventmeapp.dev/v1/test')
+                  .respond(200, '');
+      $httpBackend.flush();
+    });
+&nbsp;
+    it('should perform valid DELETE requests', function() {
+      api.delete('test');
+      $httpBackend.expectDELETE('http://api.eventmeapp.dev/v1/test')
+                  .respond(200, '');
+      $httpBackend.flush();
+    });
+&nbsp;
+    it('should provide a token with requests if it exists', function() {
+      api.get('test');
+      $httpBackend.expectGET('http://api.eventmeapp.dev/v1/test', <span class="fstat-no" title="function not covered" >function(headers) {</span>
+<span class="cstat-no" title="statement not covered" >        return headers.Authorization === 'Bearer abcd';</span>
+      }).respond(200, '');
+      $httpBackend.flush();
+    });
+&nbsp;
+    it('should save provided tokens to user if they exist', function() {
+      api.get('test');
+      $httpBackend
+        .expectGET('http://api.eventmeapp.dev/v1/test')
+        .respond(200, {token : '1234'});
+      $httpBackend.flush();
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      expect(user.token).toBe('1234');</span>
+    });
+&nbsp;
+  });
+});
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Nov 16 2015 17:35:13 GMT+0100 (CET)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

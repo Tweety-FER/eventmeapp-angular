@@ -1,6 +1,5 @@
-'use strict';
 
-var defaultDomain = 'http://eventmeapp.com/';
+var defaultDomain = 'http://api.eventmeapp.dev/';
 
 describe('API utils module', function() {
   beforeEach(function() {
@@ -25,12 +24,12 @@ describe('API utils module', function() {
       expect(link).toBeDefined();
     });
 
-    it('should default to http://eventmeapp.com/api/dev/', function() {
-      expect(link('test')).toBe('http://eventmeapp.com/api/dev/test');
-    })
+    it('should default to http://api.eventmeapp.dev/v1/', function() {
+      expect(link('test')).toBe('http://api.eventmeapp.dev/v1/');
+    });
 
     it('should strip leading slashes', function() {
-      expect(link('/test/1')).toBe('http://eventmeapp.com/api/dev/test/1');
+      expect(link('/test/1')).toBe('http://api.eventmeapp.dev/v1/test/1');
     });
   });
 
@@ -59,36 +58,36 @@ describe('API utils module', function() {
 
     it('should perform valid GET requests', function() {
       api.get('test');
-      $httpBackend.expectGET('http://eventmeapp.com/api/dev/test')
+      $httpBackend.expectGET('http://api.eventmeapp.dev/v1/test')
                   .respond(200, '');
       $httpBackend.flush();
     });
 
     it('should perform valid POST requests', function() {
       api.post('test');
-      $httpBackend.expectPOST('http://eventmeapp.com/api/dev/test')
+      $httpBackend.expectPOST('http://api.eventmeapp.dev/v1/test')
                   .respond(200, '');
       $httpBackend.flush();
     });
 
     it('should perform valid PUT requests', function() {
       api.put('test');
-      $httpBackend.expectPUT('http://eventmeapp.com/api/dev/test')
+      $httpBackend.expectPUT('http://api.eventmeapp.dev/v1/test')
                   .respond(200, '');
       $httpBackend.flush();
     });
 
     it('should perform valid DELETE requests', function() {
       api.delete('test');
-      $httpBackend.expectDELETE('http://eventmeapp.com/api/dev/test')
+      $httpBackend.expectDELETE('http://api.eventmeapp.dev/v1/test')
                   .respond(200, '');
       $httpBackend.flush();
     });
 
     it('should provide a token with requests if it exists', function() {
       api.get('test');
-      $httpBackend.expectGET('http://eventmeapp.com/api/dev/test', function(headers) {
-        return headers['Authorization'] === 'Bearer abcd';
+      $httpBackend.expectGET('http://api.eventmeapp.dev/v1/test', function(headers) {
+        return headers.Authorization === 'Bearer abcd';
       }).respond(200, '');
       $httpBackend.flush();
     });
@@ -96,12 +95,12 @@ describe('API utils module', function() {
     it('should save provided tokens to user if they exist', function() {
       api.get('test');
       $httpBackend
-        .expectGET('http://eventmeapp.com/api/dev/test')
+        .expectGET('http://api.eventmeapp.dev/v1/test')
         .respond(200, {token : '1234'});
       $httpBackend.flush();
 
       expect(user.token).toBe('1234');
     });
 
-  })
+  });
 });

@@ -36350,18 +36350,16 @@ $templateCache.put("auth/login.html","<!-- Start of page -->\n\n<div class=\"log
 $templateCache.put("auth/register.html","<form ng-submit=\"register.doRegister()\" class=\"ui form\">\n<div ng-show=\"register.errors._general\" class=\"form-group has-error\">\n    <div class=\"help-block\">{{register.errors._general}}</div>\n</div>\n<div class=\"form-group\" ng-class=\"register.errors.email ? \'has-error\' : \'\'\">\n    <input type=\"email\" class=\"form-control\" ng-model=\"register.email\" placeholder=\"E-mail\" />\n    <div class=\"help-block\">{{register.errors.email.join(\'\\n\')}}</div>\n</div>\n<div class=\"form-group\" ng-class=\"register.errors.name ? \'has-error\' : \'\'\">\n    <input type=\"text\" class=\"form-control\" ng-model=\"register.name\" placeholder=\"Full Name\" />\n    <div class=\"help-block\">{{register.errors.name.join(\'\\n\')}}</div>\n</div>\n<div class=\"form-group\" ng-class=\"register.errors.password ? \'has-error\' : \'\'\">\n    <input type=\"password\" class=\"form-control\" ng-model=\"register.password\" placeholder=\"Password\" />\n    <div class=\"help-block\">{{register.errors.password.join(\'\\n\')}}</div>\n</div>\n<p>\n    <button type=\"submit\" class=\"btn btn-block btn-primary btn-social\" ng-disabled=\"register.busy.busy\">\n        Register\n    </button>\n</p>\n</form>");
 $templateCache.put("auth/signup.html","<emu-tabs>\n	<emu-tab label=\"Login\">\n		<emu-login></emu-login>\n	</emu-tab>\n	<emu-tab label=\"Register\">\n		<emu-register></emu-register>\n	</emu-tab>\n</emu-tabs>\n");
 $templateCache.put("auth/test.html","<h1>TEST</h1>\n");
-$templateCache.put("calendar/calendar.html","<table class=\"emu-calendar\">\n  <tr>\n    <th></th>\n    <th ng-repeat=\"day in calendar.weekdays\">\n      {{day.name}}\n    </th>\n  </tr>\n  <tr ng-repeat=\"slot in calendar.slots\">\n    <td>{{slot}}</td>\n    <td ng-repeat=\"day in calendar.weekdays\">\n      \n    </td>\n  </tr>\n</table>\n");
-$templateCache.put("calendar/column.html","<div class=\"ui grid\">\n  <div class=\"row cal-slot cal-slot-header\">\n    <div class=\"ui segment\">\n      Monday\n    </div>\n  </div>\n  <div class=\"row cal-slot\" ng-repeat=\"slot in col.slots\">\n    <!--<div class=\"ui grid\" ng-if=\"!!slot\">\n      <div ng-repeat=\"field in slot\" class=\"cal-field one wide column\">\n        10:00-11:00\n      </div>\n    </div> -->\n      08:00-10:00\n  </div>\n</div>\n");
+$templateCache.put("events/events.html","<div>\n    <span class=\"fa fa-spinner\" /> Work in progress...\n\n    Example:\n    <div class=\"ui grid\">\n        <emu-cal-column></emu-cal-column>\n        <emu-cal-column></emu-cal-column>\n        <emu-cal-column></emu-cal-column>\n        <emu-cal-column></emu-cal-column>\n        <emu-cal-column></emu-cal-column>\n        <emu-cal-column></emu-cal-column>\n        <emu-cal-column></emu-cal-column>\n    </div>\n</div>\n");
 $templateCache.put("following/following.html","<div>\n    <span class=\"fa fa-spinner\" /> Work in progress...\n</div>");
 $templateCache.put("fx/nag.html","<div ng-show=\"nag.data.show\">\n    {{nag.data.message}}\n    <a ng-click=\"nag.hide()\" ng-show=\"nag.data.dismissible\">\n        <span class=\"right fa fa-close\"/>\n    </a>\n</div>\n");
 $templateCache.put("fx/tab.html","<div class=\"active tab \" ng-class=\"class\" ng-show=\"class === \'active\'\" ng-transclude>\n</div>\n");
 $templateCache.put("fx/tabs.html","\n  <div class=\"ui top attached tabular menu\">\n    <a ng-repeat=\"tab in tabs.tabs\"\n      class=\"item\"\n      ng-class=\"$index == tabs.activeIndex ? \'active\' : \'\'\"\n      ng-click=\"tabs.activate($index)\">\n      {{tab}}\n    </a>\n  </div>\n  <div ng-transclude class=\"ui segment bottom attached \"></div>\n</div>\n");
-$templateCache.put("events/events.html","<div>\n    <span class=\"fa fa-spinner\" /> Work in progress...\n\n    Example:\n    <div class=\"ui grid\">\n        <emu-cal-column></emu-cal-column>\n        <emu-cal-column></emu-cal-column>\n        <emu-cal-column></emu-cal-column>\n        <emu-cal-column></emu-cal-column>\n        <emu-cal-column></emu-cal-column>\n        <emu-cal-column></emu-cal-column>\n        <emu-cal-column></emu-cal-column>\n    </div>\n</div>\n");
 $templateCache.put("index/index.html","\n<div class=\"homepage main\" >\n\n<div class=\"ui container\" ng-show=\"navbar.user.loggedIn\">\n <h1>Welcome {{navbar.user.name}}</h1>\n</div>\n\n\n<div class=\"hexagon\"></div>\n<div class=\"hexagon mini\"></div>\n<div class=\"hexagon tiny\"></div>\n<div class=\"hexagon small\"></div>\n\n<div class=\"ui container\" ng-hide=\"navbar.user.loggedIn\">\n<div class=\"ui grid\">\n   <div class=\"nine wide column\">\n     <h1 class=\"logo\">Eventmeapp</h1>\n   <p class=\"intro\">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\n   tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\n   quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\n   consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\n   cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n   proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\n   </div>\n   <div class=\"seven wide column\">\n\n    <emu-signup></emu-signup>\n   </div>\n</div>\n\n<div class=\"row-fluid\" ng-show=\"index.user.loggedIn\">\n    <h2>Welcome {{index.user.name}}!</h2>\n</div>\n\n</div>\n");
-$templateCache.put("profile/profile.html","\n<div class=\"page profile\">\n\n<div class=\"header segment\">\n  <div class=\"ui container\">\n    <div class=\"ui items\">\n      <div class=\"item\">\n   \n        <div class=\"middle aligned content\">\n          <div class=\"ui image-octogon mini image\">\n              <div class=\"octogon\">\n                 <img ng-src=\"{{profile.user.avatar.large}}\" class=\"ui image\" alt=\"User profile picture\" />\n              </div>\n          </div>\n          <div class=\"header user\">{{profile.user.name}}</div>\n          <div class=\"right floated\">\n            <div class=\"ui four column grid \">\n              <div class=\"column  wide\">\n                <div class=\"ui horizontal segment \">\n                  <div class=\"ui mini statistic\">\n                    <div class=\"value\">{{profile.user.following}}</div>\n                    <div class=\"label\">Following </div>\n                  </div>\n                </div>\n              </div>\n              <div class=\"column wide\">\n                <div class=\"ui horizontal segment \">\n                  <div class=\"ui mini statistic\">\n                    <div class=\"value\">1,250</div>\n                    <div class=\"label\">Events</div>\n                  </div>\n                </div>\n              </div>\n              <div class=\"column wide\">\n                <div class=\"ui horizontal segment \">\n                  <div class=\"ui mini statistic\">\n                    <div class=\"value\">{{profile.user.followers}}</div>\n                    <div class=\"label\">Followers </div>\n                  </div>\n                </div>\n              </div>\n              <div class=\"column wide\">\n                \n                   <div class=\"ui primary button\" ng-hide=\"isMe\">Follow</div>\n                   <div class=\"ui primary button\" ng-show=\"isMe\">Edit</div>\n              </div>\n            </div><!-- End of floated Content -->\n          </div>\n        </div>\n      </div><!-- End of Item -->\n    </div><!-- End of items-->\n\n\n \n\n  </div><!-- End of Container Segment-->\n</div><!-- End of Header Segment-->\n\n\n\n<div class=\"ui container\">\n<div class=\"ui relaxed items\">\n  <div class=\"item\">\n    <div class=\"ui tiny image\">\n      <img src=\"/images/wireframe/image.png\">\n    </div>\n    <div class=\"middle aligned content\">\n      <a class=\"header\">12 Years a Slave</a>\n    </div>\n  </div>\n  <div class=\"item\">\n    <div class=\"ui tiny image\">\n      <img src=\"/images/wireframe/image.png\">\n    </div>\n    <div class=\"middle aligned content\">\n      <a class=\"header\">My Neighbor Totoro</a>\n    </div>\n  </div>\n  <div class=\"item\">\n    <div class=\"ui tiny image\">\n      <img src=\"/images/wireframe/image.png\">\n    </div>\n    <div class=\"middle aligned content\">\n      <a class=\"header\">Watchmen</a>\n    </div>\n  </div>\n</div>\n</div>\n\n\n\n<div class=\"ui centered grid\">\n\n\n\n    <div class=\"two wide column\">\n      \n       \n\n        <div class=\"ui horizontal divider\">\n          Stats\n        </div>\n        <div class=\"stats-panel\">\n          <div class=\"row\">\n            Followed By : {{0}}\n          </div>\n          <div class=\"row\">\n            Follows : {{0}}\n          </div>\n          <div class=\"row\">\n            Events Created : {{0}}\n          </div>\n          <div class=\"row\">\n            Last Seen: One Day Ago\n          </div>\n        </div>\n    </div>\n    <div class=\"six wide column\">\n        <div class=\"ui grid\">\n          <div class=\"row\">\n              <div class=\"eight wide column\">\n                  <strong>Name</strong>\n              </div>\n              <div class=\"eight wide column\">\n                  {{profile.user.name}}\n              </div>\n          </div>\n\n          <div class=\"row\" ng-show=\"profile.user.settings.showGender\">\n              <div class=\"eight wide column\">\n                  <strong>Sex</strong>\n              </div>\n              <div class=\"eight wide column\">\n                  <span class=\"{{profile.user.gender | gender}}\" />\n              </div>\n          </div>\n\n          <div class=\"row\" ng-show=\"profile.user.settings.showEmail\">\n              <div class=\"eight wide column\">\n                  <strong>E-Mail</strong>\n              </div>\n              <div class=\"eight wide column\">\n                  {{profile.user.email}}\n              </div>\n          </div>\n\n          <div class=\"row\">\n            <div class=\"column wide column\">\n              {{profile.user || json}}\n            </div>\n          </div>\n        </div>\n    </div>\n\n    <div class=\"four wide column\">\n        <!-- Padding -->\n    </div>\n\n</div>\n\n</div>");
 $templateCache.put("navbar/navbar.html","<div class=\"ui grid\">\n        <div class=\"computer tablet only row\">\n            <div class=\"ui fixed inverted menu medium\">\n            <div class=\"container\">\n               \n\n\n                \n\n                <a class=\"title item header\"  ui-sref=\"index\" ui-sref-active=\"active\">Eventmeapp</a>\n                <a class=\"item\" ui-sref-active=\"active\" ui-sref=\"profile\">Profile</a>\n                <a class=\"item\" ui-sref-active=\"active\" ui-sref=\"events\">Events</a>\n                <a class=\"item\" ui-sref-active=\"active\" ui-sref=\"follow\">Following</a>\n                <a class=\"item\" ui-sref-active=\"active\" ui-sref=\"settings\">Settings</a>\n  <div class=\"right menu \">\n                    <div class=\"item\">\n                        <div class=\"ui transparent1 icon input inverted transparent search\">\n                            <input type=\"text\" class=\"prompt\" placeholder=\"Search...\">\n                            <i class=\"search link icon\"></i>\n                            <div class=\"results\"></div>\n                        </div>\n                    </div>\n\n                    <div class=\"ui item dropdown top\" ng-show=\"navbar.user.loggedIn\">\n                        <img class=\"ui circular1 avatar tiny \" style=\"width:24px; height:24px; margin:0px; margin-right:5px;\" ng-src=\"{{navbar.user.avatar.small}}\">\n                        {{navbar.user.name}}\n                        <div class=\"menu\">\n                          <a class=\"item\">Action</a>\n                          <a class=\"ui aider\"></a>\n                          <a class=\"item\">Seperated link</a>\n                          <a class=\"item\" ui-sref=\"index\" ng-click=\"navbar.doLogout()\">Log Out</a>\n                        </div>\n                    </div>\n</div>       \n\n            </div>\n            </div>\n        </div>\n        <div class=\"mobile only row\">\n            <div class=\"ui inverted navbar menu\">\n                <a href=\"\" class=\"brand item\">Project Name</a>\n                <div class=\"right menu open\">\n                    <a href=\"\" class=\"menu item\">\n                        <i class=\"reorder icon\"></i>\n                    </a>\n                </div>\n            </div>\n            <div class=\"ui vertical navbar menu\">\n                <a href=\"\" class=\"active item\">Home</a>\n                <a href=\"\" class=\"item\">About</a>\n                <a href=\"\" class=\"item\">Contact</a>\n                <div class=\"ui item\">\n                    <div class=\"text\">Dropdown</div>\n                    <div class=\"menu\">\n                        <a class=\"item\">Action</a>\n                        <a class=\"item\">Another action</a>\n                        <a class=\"item\">Something else here</a>\n                        <a class=\"ui aider\"></a>\n                        <a class=\"item\">Seperated link</a>\n                        <a class=\"item\">One more seperated link</a>\n                      </div>\n                </div>\n                <div class=\"menu\">\n                    <a href=\"\" class=\"active item\">Default</a>\n                    <a href=\"\" class=\"item\">Static top</a>\n                    <a href=\"\" class=\"item\">Fixed top</a>\n                </div>\n            </div>\n        </div>\n</div>\n");
 $templateCache.put("navbar/navbarnew.html","\n\n<div class=\"ui grid\" >\n    <div class=\"computer tablet only row\" >\n        <div class=\"ui fixed top inverted menu medium main\" >\n            <div class=\"ui container cd-main-nav \" ng-class=\"{\'moves-out\':navbar.isUserMenuVisible}\">\n                <div class=\"title item header\"  ui-sref=\"index1\" >Eventmeapp</div>\n                \n                <a class=\"item\" ui-sref=\"index\" ui-sref-active=\"active\">\n                    <i class=\"icon home\"></i> \n                    Home\n                </a>\n\n                <a class=\"item\" ui-sref-active=\"active\" ui-sref=\"events\">\n                    <i class=\"icon search\"></i> \n                    Discover\n                </a>\n\n                \n                <div class=\"right menu \">\n                    <div class=\"item\">\n                        <div class=\"ui transparent1 icon input inverted transparent search\">\n                            <input type=\"text\" class=\"prompt\" placeholder=\"Search...\">\n                            <i class=\"search link icon\"></i>\n                            <div class=\"results\"></div>\n                        </div>\n                    </div>\n\n                    <div class=\"ui item dropdown1 top user-holder \" ng-show=\"navbar.user.loggedIn\">\n                       <a class=\"cd-subnav-trigger\" href=\"\" ng-click=\"navbar.toggleUserMenu()\">\n                            <img class=\"ui circular1 avatar tiny image\" style=\"width:24px; height:24px; margin:0px; margin-right:5px;\" ng-src=\"{{navbar.user.avatar.small}}\">\n                            {{navbar.user.name}}\n                            \n                        </a>\n                    </div>\n                </div><!-- End of right menu -->  \n<div class=\"user-menu ui menu\" >\n   <div class=\"ui container\">\n                            <a class=\"item\" ui-sref-active=\"active\" ui-sref=\"profile\">\n                                <i class=\"icon user\"></i>\n                                Me\n                            </a>\n              \n                             <a class=\"item\" ui-sref-active=\"active\" ui-sref=\"follow\">Following</a>\n                             <a class=\"item\" ui-sref-active=\"active\" ui-sref=\"settings\">\n                                <i class=\"icon setting\"></i>\n                                Settings\n                             </a>\n                              \n                              <a class=\"item\" ui-sref=\"index\" ng-click=\"navbar.doLogout()\">\n                                <i class=\"sign out icon\"></i>\n                                Sign out\n                              </a>\n                              </div>\n                            </div>\n\n            </div><!-- End of container -->\n\n\n\n\n        </div><!-- End of ui menu-->\n    </div><!-- End of computer-->\n    \n    <div class=\"mobile only row\">\n            <div class=\"ui inverted navbar menu\">\n                <a href=\"\" class=\"brand item\">Project Name</a>\n                <div class=\"right menu open\">\n                    <a href=\"\" class=\"menu item\">\n                        <i class=\"reorder icon\"></i>\n                    </a>\n                </div>\n            </div>\n            <div class=\"ui vertical navbar menu\">\n                <a href=\"\" class=\"active item\">Home</a>\n                <a href=\"\" class=\"item\">About</a>\n                <a href=\"\" class=\"item\">Contact</a>\n                <div class=\"ui item\">\n                    <div class=\"text\">Dropdown</div>\n                    <div class=\"menu\">\n                        <a class=\"item\">Action</a>\n                        <a class=\"item\">Another action</a>\n                        <a class=\"item\">Something else here</a>\n                        <a class=\"ui aider\"></a>\n                        <a class=\"item\">Seperated link</a>\n                        <a class=\"item\">One more seperated link</a>\n                      </div>\n                </div>\n                <div class=\"menu\">\n                    <a href=\"\" class=\"active item\">Default</a>\n                    <a href=\"\" class=\"item\">Static top</a>\n                    <a href=\"\" class=\"item\">Fixed top</a>\n                </div>\n            </div>\n        </div>\n</div>\n");
 $templateCache.put("navbar/user.html","<div class=\"ui vertical navbar menu\">\n        <a href=\"\" class=\"active item\">Home</a>\n        <a href=\"\" class=\"item\">About</a>\n        <a href=\"\" class=\"item\">Contact</a>\n        <div class=\"ui item\">\n            <div class=\"text\">Dropdown</div>\n            <div class=\"menu\">\n                <a class=\"item\">Action</a>\n                <a class=\"item\">Another action</a>\n                <a class=\"item\">Something else here</a>\n                <a class=\"ui aider\"></a>\n                <a class=\"item\">Seperated link</a>\n                <a class=\"item\">One more seperated link</a>\n              </div>\n        </div>\n        <div class=\"menu\">\n            <a href=\"\" class=\"active item\">Default</a>\n            <a href=\"\" class=\"item\">Static top</a>\n            <a href=\"\" class=\"item\">Fixed top</a>\n        </div>\n</div>");
+$templateCache.put("profile/profile.html","\n<div class=\"page profile\">\n\n<div class=\"header segment\">\n  <div class=\"ui container\">\n    <div class=\"ui items\">\n      <div class=\"item\">\n   \n        <div class=\"middle aligned content\">\n          <div class=\"ui image-octogon mini image\">\n              <div class=\"octogon\">\n                 <img ng-src=\"{{profile.user.avatar.large}}\" class=\"ui image\" alt=\"User profile picture\" />\n              </div>\n          </div>\n          <div class=\"header user\">{{profile.user.name}}</div>\n          <div class=\"right floated\">\n            <div class=\"ui four column grid \">\n              <div class=\"column  wide\">\n                <div class=\"ui horizontal segment \">\n                  <div class=\"ui mini statistic\">\n                    <div class=\"value\">{{profile.user.following}}</div>\n                    <div class=\"label\">Following </div>\n                  </div>\n                </div>\n              </div>\n              <div class=\"column wide\">\n                <div class=\"ui horizontal segment \">\n                  <div class=\"ui mini statistic\">\n                    <div class=\"value\">1,250</div>\n                    <div class=\"label\">Events</div>\n                  </div>\n                </div>\n              </div>\n              <div class=\"column wide\">\n                <div class=\"ui horizontal segment \">\n                  <div class=\"ui mini statistic\">\n                    <div class=\"value\">{{profile.user.followers}}</div>\n                    <div class=\"label\">Followers </div>\n                  </div>\n                </div>\n              </div>\n              <div class=\"column wide\">\n                \n                   <div class=\"ui primary button\" ng-hide=\"isMe\">Follow</div>\n                   <div class=\"ui primary button\" ng-show=\"isMe\">Edit</div>\n              </div>\n            </div><!-- End of floated Content -->\n          </div>\n        </div>\n      </div><!-- End of Item -->\n    </div><!-- End of items-->\n\n\n \n\n  </div><!-- End of Container Segment-->\n</div><!-- End of Header Segment-->\n\n\n\n<div class=\"ui container\">\n<div class=\"ui relaxed items\">\n  <div class=\"item\">\n    <div class=\"ui tiny image\">\n      <img src=\"/images/wireframe/image.png\">\n    </div>\n    <div class=\"middle aligned content\">\n      <a class=\"header\">12 Years a Slave</a>\n    </div>\n  </div>\n  <div class=\"item\">\n    <div class=\"ui tiny image\">\n      <img src=\"/images/wireframe/image.png\">\n    </div>\n    <div class=\"middle aligned content\">\n      <a class=\"header\">My Neighbor Totoro</a>\n    </div>\n  </div>\n  <div class=\"item\">\n    <div class=\"ui tiny image\">\n      <img src=\"/images/wireframe/image.png\">\n    </div>\n    <div class=\"middle aligned content\">\n      <a class=\"header\">Watchmen</a>\n    </div>\n  </div>\n</div>\n</div>\n\n\n\n<div class=\"ui centered grid\">\n\n\n\n    <div class=\"two wide column\">\n      \n       \n\n        <div class=\"ui horizontal divider\">\n          Stats\n        </div>\n        <div class=\"stats-panel\">\n          <div class=\"row\">\n            Followed By : {{0}}\n          </div>\n          <div class=\"row\">\n            Follows : {{0}}\n          </div>\n          <div class=\"row\">\n            Events Created : {{0}}\n          </div>\n          <div class=\"row\">\n            Last Seen: One Day Ago\n          </div>\n        </div>\n    </div>\n    <div class=\"six wide column\">\n        <div class=\"ui grid\">\n          <div class=\"row\">\n              <div class=\"eight wide column\">\n                  <strong>Name</strong>\n              </div>\n              <div class=\"eight wide column\">\n                  {{profile.user.name}}\n              </div>\n          </div>\n\n          <div class=\"row\" ng-show=\"profile.user.settings.showGender\">\n              <div class=\"eight wide column\">\n                  <strong>Sex</strong>\n              </div>\n              <div class=\"eight wide column\">\n                  <span class=\"{{profile.user.gender | gender}}\" />\n              </div>\n          </div>\n\n          <div class=\"row\" ng-show=\"profile.user.settings.showEmail\">\n              <div class=\"eight wide column\">\n                  <strong>E-Mail</strong>\n              </div>\n              <div class=\"eight wide column\">\n                  {{profile.user.email}}\n              </div>\n          </div>\n\n          <div class=\"row\">\n            <div class=\"column wide column\">\n              {{profile.user || json}}\n            </div>\n          </div>\n        </div>\n    </div>\n\n    <div class=\"four wide column\">\n        <!-- Padding -->\n    </div>\n\n</div>\n\n</div>");
 $templateCache.put("search/search_users.html","<div class=\"ui transparent1 icon input search\">\n  <input type=\"text\" class=\"prompt\" placeholder=\"Search...\">\n  <i class=\"search link icon\"></i>\n  <div class=\"results\"></div>\n</div>");
 $templateCache.put("settings/settings.html","<div>\n    <span class=\"fa fa-spinner\" /> Work in progress...\n</div>");}]);
 //     Underscore.js 1.8.3
@@ -36403,7 +36401,6 @@ $templateCache.put("settings/settings.html","<div>\n    <span class=\"fa fa-spin
             'emu.api',
             'emu.views',
             'emu.status',
-            'emu.calendar',
             'satellizer',
             'ngSanitize',
             'ui.router',
@@ -36511,7 +36508,9 @@ $templateCache.put("settings/settings.html","<div>\n    <span class=\"fa fa-spin
                       return profileProvider.$get();
                     },
                     user : function(profile, authenticated, $stateParams) {
-                        if(!authenticated) return {}; //Nothing is going to happen anyway
+                        if(!authenticated) {
+                          return; //Nothing is going to happen anyway
+                        }
 
                         var status = statusProvider.$get();
 
@@ -36883,183 +36882,6 @@ $templateCache.put("settings/settings.html","<div>\n    <span class=\"fa fa-spin
         });
 })();
 
-(function() {
-  'use strict';
-
-  const MIN_IN_DAY = 24 * 60;
-  const MIN_INTERVALS = 12; //2-hour
-  const MAX_INTERVALS = 24 * 6; //10-minute
-  const DEFAULT_MINUTES = 30;
-  const DEBUG = true;
-  const TEST_DATA = [
-    {
-      name : 'Test 1',
-      from : '08:00',
-      to : '09:30',
-      location : 'Office'
-    },
-    {
-      name : 'Test 2',
-      from : '09:00',
-      to : '10:00',
-      location : 'Home'
-    },
-    {
-      name : 'Test 3',
-      from : '12:00',
-      to : '12:15',
-      location : 'Lunch'
-    }
-  ];
-
-  angular
-    .module('emu.calendar', ['templates'])
-    .directive('emuCalColumn', Column)
-    .directive('emuCalendar', Calendar);
-
-  Column.$inject = ['$templateCache', '$filter'];
-
-  function Column($templateCache, $filter) {
-
-    ColumnCtrl.$inject = [];
-
-    function ColumnCtrl() {
-      var self = this;
-
-      self.minutes = self.minutes || DEFAULT_MINUTES;
-      self.events = self.events || TEST_DATA; //TODO remove
-
-      var minBackup = self.minutes;
-
-      //Calculate number of intervals, but keep them between 10-minute and 2-hour
-      self.intervals = Math.min(
-          MAX_INTERVALS,
-          Math.max(
-            MIN_INTERVALS,
-            Math.round(MIN_IN_DAY / self.minutes)
-          )
-        );
-
-      self.minutes = MIN_IN_DAY / self.intervals; //Keep minute intervals in check
-      self.slots = processEvents(self.events);
-
-      console.log('Slots', self.slots);
-
-      if(DEBUG && minBackup != self.minutes) {
-        console.log('[DEBUG]', 'Normalised minutes to', self.minutes);
-      }
-
-      function processEvents(events) {
-        var slots = [];
-
-        // Instantiate blank intervals
-        for(var i = 0; i < self.intervals; i++) {
-          slots.push({fields : []});
-        }
-
-        angular.forEach(events, function(e) {
-          var mFrom = getMinutes(e.from);
-          var mTo = getMinutes(e.to);
-          //name, location
-          var span = $filter('date')(e.from, 'HH:mm')
-                   + '-'
-                   + $filter('date')(e.to, 'HH:mm');
-
-          mFrom = Math.floor(mFrom / self.minutes); //Floor to find beginning slot index
-          mTo = Math.ceil(mTo / self.minutes) - 1; //Ceil to find end slot index
-
-          slots[mFrom].fields.push({
-            span : span,
-            name : e.name,
-            location : e.location,
-            blank : false
-          });
-
-          for(var i = mFrom + 1; i <= mTo; i++) {
-            slots[i].fields.push({blank : true});
-          }
-        });
-
-        return slots;
-      }
-
-      function getMinutes(hhmm) {
-        var parts = hhmm.split(':');
-        return (60 * (+parts[0])) + (+parts[1]);
-      }
-    }
-
-    return {
-      restrict : 'E',
-      scope : {
-        events : '@',
-        minutes : '@'
-      },
-      template : $templateCache.get('calendar/column.html'),
-      controller : ColumnCtrl,
-      controllerAs : 'col',
-      bindToController : true
-
-    };
-  }
-
-  Calendar.$inject = ['$templateCache'];
-
-  function Calendar($templateCache) {
-    return {
-      restrict :'E',
-      template : $templateCache.get('calendar/calendar.html'),
-      controller : CalendarCtrl,
-      controllerAs : 'calendar',
-      bindToController : true
-    };
-
-    CalendarCtrl.$inject = [];
-
-    function CalendarCtrl() {
-      var self = this;
-
-      self.weekdays = [
-        {
-          name : 'Monday',
-          work : true
-        },
-        {
-          name : 'Tuesday',
-          work : true
-        },
-        {
-          name : 'Wednesday',
-          work : true
-        },
-        {
-          name : 'Thursday',
-          work : true
-        },
-        {
-          name : 'Friday',
-          work : true
-        },
-        {
-          name : 'Saturday',
-          work : false
-        },
-        {
-          name : 'Sunday',
-          work : false
-        }
-      ];
-
-      self.slots = [];
-
-      for(var i = 0; i < 24; i++) {
-        self.slots.push(i + ":00");
-      }
-    }
-  }
-
-}());
-
 (function () {
     'use strict';
 
@@ -37102,19 +36924,19 @@ $templateCache.put("settings/settings.html","<div>\n    <span class=\"fa fa-spin
           controller : NagController,
           controllerAs : 'nag'
       };
+    }
 
-      NagController.$inject = ['nag'];
+    NagController.$inject = ['nag'];
 
-      function NagController(nag) {
-          var self = this;
+    function NagController(nag) {
+        var self = this;
 
-          self.data = nag.data;
-          self.hide = nag.hide;
+        self.data = nag.data;
+        self.hide = nag.hide;
 
-          function hide() {
-              nag.hide();
-          }
-      }
+        function hide() {
+            nag.hide();
+        }
     }
 
     SemanticTabs.$inject = ['$templateCache'];
@@ -37125,39 +36947,39 @@ $templateCache.put("settings/settings.html","<div>\n    <span class=\"fa fa-spin
         scope : {},
         transclude : true,
         template : $templateCache.get('fx/tabs.html'),
-        controller : tabsCtrl,
+        controller : TabsCtrl,
         controllerAs : 'tabs'
       };
+    }
 
-      tabsCtrl.$inject = ['$scope'];
+    TabsCtrl.$inject = ['$scope'];
 
-      function tabsCtrl($scope) {
-        var self = this;
+    function TabsCtrl($scope) {
+      var self = this;
 
-        self.tabs = [];
-        self.addTab = addTab; //this ! Must be to be accessible by child!
-        self.activate = activate;
-        self.lastIndex = 0;
-        self.activeIndex = 0;
-        self.getActiveIndex = getActiveIndex;
+      self.tabs = [];
+      self.addTab = addTab; //this ! Must be to be accessible by child!
+      self.activate = activate;
+      self.lastIndex = 0;
+      self.activeIndex = 0;
+      self.getActiveIndex = getActiveIndex;
 
-        function getActiveIndex() {
-          return self.activeIndex;
-        }
-
-        function addTab(tabName) {
-          var index = 0 + self.lastIndex++;
-          tabName = tabName || ('Tab ' + (index + 1));
-
-          self.tabs.push(tabName);
-          return index;
-        }
-
-        function activate(index) {
-          self.activeIndex = index;
-        }
-
+      function getActiveIndex() {
+        return self.activeIndex;
       }
+
+      function addTab(tabName) {
+        var index = 0 + self.lastIndex++;
+        tabName = tabName || ('Tab ' + (index + 1));
+
+        self.tabs.push(tabName);
+        return index;
+      }
+
+      function activate(index) {
+        self.activeIndex = index;
+      }
+
     }
 
     SemanticTab.$inject = ['$templateCache'];
@@ -37308,11 +37130,12 @@ $templateCache.put("settings/settings.html","<div>\n    <span class=\"fa fa-spin
         self.doLogout = function(){
             logout();
             self.isUserMenuVisible = false;
-        }
+        };
+        
         self.user = user;
         console.log(user);
         self.toggleUserMenu = function (){
-            
+
             self.isUserMenuVisible = ! self.isUserMenuVisible;
         };
         self.isUserMenuVisible = false;
@@ -37321,8 +37144,9 @@ $templateCache.put("settings/settings.html","<div>\n    <span class=\"fa fa-spin
     }
 
 
-    
+
 })();
+
 (function () {
     'use strict';
 
@@ -37356,7 +37180,7 @@ $templateCache.put("settings/settings.html","<div>\n    <span class=\"fa fa-spin
             function success(data) {
                 if(data && data.data) {
                     self.user = data.data;
-                    self.isMe = self.user.id === me.id;
+                    self.isMe = self.user.id === currentUser.id;
                 }
             }
 
@@ -37372,6 +37196,7 @@ $templateCache.put("settings/settings.html","<div>\n    <span class=\"fa fa-spin
         }
 
 })();
+
 (function () {
     'use strict';
 
@@ -37437,13 +37262,14 @@ $templateCache.put("settings/settings.html","<div>\n    <span class=\"fa fa-spin
         var self = this;
         self.search = function(){
             alert('search');
-        }
-        
+        };
+
     }
 
 
-    
+
 })();
+
 (function () {
     'use strict';
 
@@ -37454,7 +37280,7 @@ $templateCache.put("settings/settings.html","<div>\n    <span class=\"fa fa-spin
     /**
      * Registers the user by e-mail, name and password via api
      */
-    Register.$inject = ['api'];
+    SearchUsers.$inject = ['api'];
 
     function SearchUsers(api) {
         function register(name) {
@@ -37472,7 +37298,7 @@ $templateCache.put("settings/settings.html","<div>\n    <span class=\"fa fa-spin
         return register;
     }
 
-   
+
 
 
 
@@ -37494,31 +37320,21 @@ $templateCache.put("settings/settings.html","<div>\n    <span class=\"fa fa-spin
         .factory('api', Api);
 
     function ApiLink() {
-        var defApiPath = 'api/';
-        var defVersion = 'dev/';
+        var defVersion = 'v1/';
 
-        return function(path, domain, apiPath, version) {
-            //If there is no domain, assume global domain. If no global domain, fallback to locally defined default
-            if(! domain) {
-              if(defaultDomain) {
-                domain = defaultDomain;
-              } else {
-                domain = 'http://eventmeapp.com';
-              }
-            }
+        return function(path, domain, version) {
+          domain = domain || 'http://api.eventmeapp.dev';
+          version = version || defVersion;
 
-            apiPath = apiPath || defApiPath;
-            version = version || defVersion;
+          var basePath = domain + version;
 
-            var basePath = domain + apiPath + version;
+          //Normalise the string in regards to leading slashes
+          while(path.charAt(0) === '/') {
+              path = path.substring(1);
+          }
 
-            //Normalises the string in regards to leading slashes
-            while(path.charAt(0) === '/') {
-                path = path.substring(1);
-            }
-
-            //Links the path to the api prefix
-            return basePath + path;
+          //Links the path to the api prefix
+          return basePath + path;
         };
     }
 

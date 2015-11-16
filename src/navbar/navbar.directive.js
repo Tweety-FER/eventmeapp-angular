@@ -22,11 +22,12 @@
         self.doLogout = function(){
             logout();
             self.isUserMenuVisible = false;
-        }
+        };
+        
         self.user = user;
         console.log(user);
         self.toggleUserMenu = function (){
-            
+
             self.isUserMenuVisible = ! self.isUserMenuVisible;
         };
         self.isUserMenuVisible = false;
@@ -35,5 +36,5 @@
     }
 
 
-    
+
 })();
